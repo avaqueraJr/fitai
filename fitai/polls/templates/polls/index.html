@@ -1,0 +1,9 @@
+{% if latest_workout_list %}
+    <ul>
+    {% for workout in latest_workout_list %}
+        <li><a href="/polls/{{ workout.id }}/">{{ workout.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No workout routines are available.</p>
+{% endif %}

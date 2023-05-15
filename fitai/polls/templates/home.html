@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Welcome to the home page!</h1>
+
+    {% if user.is_authenticated %}
+        {% if fitness_data %}
+            <p>You have provided your fitness data.</p>
+        {% else %}
+            <p><a href="{% url 'polls:fitness_data' %}">Provide your fitness data</a></p>
+        {% endif %}
+
+        {% if workout_routine %}
+            <p><a href="{% url 'polls:workout_routine' %}">View your workout routine</a></p>
+        {% else %}
+            <p><a href="{% url 'polls:workout_routine' %}">Create a new workout routine</a></p>
+        {% endif %}
+    {% else %}
+        <p><a href="{% url 'login' %}">Log in</a> or <a href="{% url 'register' %}">register</a> to get started.</p>
+    {% endif %}
+{% endblock %}
